@@ -1,0 +1,55 @@
+
+body {
+  background-color: #f8f9fa;
+  color: #000;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: #002d5a;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 50px;
+  margin-right: 20px;
+}
+.header-text {
+  color: white;
+  font-size: 1.2em;
+}
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h2 {
+  color: #002d5a;
+}
+.meldungsart {
+  border-left: 5px solid #002d5a;
+  padding: 15px;
+  margin-bottom: 25px;
+  background: #f1f5f9;
+}
+.meldungsart h3 {
+  margin-top: 0;
+  color: #002d5a;
+}
+.box.clickable {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #003366;
+  color: white !important;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.box.clickable:hover {
+  background-color: #00509e;
+}
