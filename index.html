@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BSI NIS2 Meldung</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="https://www.bsi.bund.de/SharedDocs/Bilder/BSI/DE/Logos/bsi-logo.svg" alt="BSI Logo" class="logo"/>
+    <h1>Erstmeldung gemäß NIS2-Richtlinie</h1>
+    <p>Dieses Formular dient zur Simulation einer Meldung gemäß §30 BSIG (NIS2). Bitte füllen Sie alle Felder vollständig aus.</p>
+    <form id="incidentForm">
+      <label>Unternehmen:</label>
+      <input type="text" name="company" required />
+
+      <label>Kontaktperson (Name, Abteilung, E-Mail, Telefon):</label>
+      <textarea name="contact" rows="3" required></textarea>
+
+      <label>Datum & Uhrzeit der Entdeckung:</label>
+      <input type="datetime-local" name="discovery" required />
+
+      <label>Betroffene Standorte:</label>
+      <input type="text" name="locations" required />
+
+      <label>Betroffene Systeme oder Dienste:</label>
+      <textarea name="systems" rows="3" required></textarea>
+
+      <label>Art des Vorfalls:</label>
+      <select name="incidentType" required>
+        <option value="ransomware">Ransomware / Verschlüsselung</option>
+        <option value="dataLeak">Datenabfluss</option>
+        <option value="ddos">DDoS-Angriff</option>
+        <option value="unauthorizedAccess">Unbefugter Zugriff</option>
+        <option value="other">Sonstiger Vorfall</option>
+      </select>
+
+      <label>Erste Ursachenanalyse:</label>
+      <textarea name="analysis" rows="4"></textarea>
+
+      <label>Bereits ergriffene Maßnahmen:</label>
+      <textarea name="actions" rows="4"></textarea>
+
+      <label>Einschätzung der Auswirkungen:</label>
+      <textarea name="impact" rows="3"></textarea>
+
+      <button type="submit">Meldung abschicken & PDF erzeugen</button>
+    </form>
+
+    <div id="confirmation" style="display:none; margin-top: 20px;">
+      <h2>✅ Meldung registriert</h2>
+      <p>Ihre Angaben wurden erfasst. Sie können den Bericht jetzt herunterladen.</p>
+      <button id="downloadPDF">📄 Bericht herunterladen</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
