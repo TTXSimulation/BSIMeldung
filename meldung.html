@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frühwarnung – Meldung eines IT-Sicherheitsvorfalls</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <img src="logo-bsi-smaller.svg" alt="BSI Logo" class="logo">
+    <h1>Bundesamt für Sicherheit in der Informationstechnik</h1>
+  </header>
+  <main class="container">
+    <h2>FRÜHWARNUNG – MELDUNG EINES IT-SICHERHEITSVORFALLS</h2>
+    <p>Dieses Formular dient zur Simulation einer Erstmeldung gemäß §30 BSIG (NIS2). Bitte füllen Sie alle Felder vollständig aus.</p>
+    <form id="incidentForm">
+      <label>Unternehmen:<br><input type="text" name="unternehmen" required></label><br><br>
+      <label>Kontaktperson (Name, Abteilung, E-Mail, Telefon):<br><textarea name="kontakt" required></textarea></label><br><br>
+      <label>Datum & Uhrzeit der Entdeckung:<br><input type="datetime-local" name="zeitpunkt" required></label><br><br>
+      <label>Betroffene Standorte:<br><textarea name="standorte" required></textarea></label><br><br>
+      <label>Betroffene Systeme oder Dienste:<br><textarea name="systeme" required></textarea></label><br><br>
+      <label>Art des Vorfalls:<br><input type="text" name="vorfall" required></label><br><br>
+      <label>Erste Ursachenanalyse:<br><textarea name="ursache" required></textarea></label><br><br>
+      <label>Bereits ergriffene Maßnahmen:<br><textarea name="massnahmen" required></textarea></label><br><br>
+      <label>Einschätzung der Auswirkungen:<br><textarea name="auswirkungen" required></textarea></label><br><br>
+      <button type="button" onclick="generatePDF()">📄 PDF erstellen</button>
+    </form>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="formular.js"></script>
+</body>
+</html>
