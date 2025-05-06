@@ -1,1 +1,0 @@
-document.querySelector('form')?.addEventListener('submit', e => { e.preventDefault(); alert('PDF würde hier generiert werden.'); });
