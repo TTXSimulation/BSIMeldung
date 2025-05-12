@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .form-section { display: none; }
+    label, input, textarea, button {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+    }
+    textarea {
+      resize: vertical;
+    }
   </style>
 </head>
 <body>
@@ -18,15 +26,15 @@
   <main class="container">
     <h2 id="formTitle">Meldung</h2>
 
-    <!-- FRÜHWARNUNG FORMULAR (Originalversion) -->
+    <!-- FRÜHWARNUNG FORMULAR (untereinander) -->
     <form id="fruehwarnungForm" class="form-section">
-      <p>Dieses Formular dient zur Meldung eines IT-Sicherheitsvorfalls gemäß §30 BSIG (NIS2). Bitte füllen Sie alle Felder vollständig aus.</p>
+      <p>Dieses Formular dient zur Frühwarnung über einen potenziell schwerwiegenden IT-Sicherheitsvorfall gemäß §30 BSIG (NIS2). Bitte füllen Sie die Felder sorgfältig aus.</p>
 
       <label for="unternehmen">Unternehmen</label>
       <input type="text" id="unternehmen" name="unternehmen" required />
 
       <label for="kontakt">Kontaktperson (Name, Abteilung, E-Mail, Telefon)</label>
-      <textarea id="kontakt" name="kontakt" rows="2" required></textarea>
+      <textarea id="kontakt" name="kontakt" rows="3" required></textarea>
 
       <label for="zeitpunkt">Datum & Uhrzeit der Entdeckung</label>
       <input type="datetime-local" id="zeitpunkt" name="zeitpunkt" required />
@@ -35,12 +43,12 @@
       <input type="text" id="standorte" name="standorte" required />
 
       <label for="systeme">Betroffene Systeme oder Dienste</label>
-      <textarea id="systeme" name="systeme" rows="2" required></textarea>
+      <textarea id="systeme" name="systeme" rows="3" required></textarea>
 
-      <label for="art">Art des Vorfalls (z. B. Ransomware / Verschlüsselung)</label>
+      <label for="art">Art des Vorfalls (z. B. Ransomware, DDoS)</label>
       <input type="text" id="art" name="art" required />
 
-      <label for="ursache">Erste Ursachenanalyse</label>
+      <label for="ursache">Erste Auffälligkeiten / Symptome</label>
       <textarea id="ursache" name="ursache" rows="3"></textarea>
 
       <label for="massnahmen">Bereits ergriffene Maßnahmen</label>
@@ -49,69 +57,41 @@
       <label for="auswirkungen">Einschätzung der Auswirkungen</label>
       <textarea id="auswirkungen" name="auswirkungen" rows="3"></textarea>
 
-      <button type="submit">Meldung übermitteln & PDF generieren</button>
+      <button type="submit">Frühwarnung übermitteln & PDF generieren</button>
     </form>
 
-    <!-- FOLGEMELDUNG FORMULAR -->
+    <!-- FOLGEMELDUNG FORMULAR (neu) -->
     <form id="folgemeldungForm" class="form-section">
-      <label for="fm_unternehmen">Unternehmen</label>
-      <input type="text" id="fm_unternehmen" required />
+      <p>Dieses Formular dient zur Ergänzung der Frühwarnung mit detaillierten Informationen zum IT-Sicherheitsvorfall.</p>
 
-      <label for="fm_kontakt">Kontaktperson</label>
-      <textarea id="fm_kontakt" rows="2" required></textarea>
+      <label for="fm_vorfallID">Referenz zur Erstmeldung (Vorfall-ID)</label>
+      <input type="text" id="fm_vorfallID" name="fm_vorfallID" required />
 
-      <label for="fm_vorfallID">Vorfall-ID</label>
-      <input type="text" id="fm_vorfallID" required />
+      <label for="fm_beschreibung">Genaue Beschreibung des Vorfalls</label>
+      <textarea id="fm_beschreibung" name="fm_beschreibung" rows="4" required></textarea>
 
-      <label for="fm_update">Neuer Kenntnisstand</label>
-      <textarea id="fm_update" rows="3"></textarea>
+      <label for="fm_systeme">Art und Umfang der betroffenen Systeme/Dienste</label>
+      <textarea id="fm_systeme" name="fm_systeme" rows="3"></textarea>
 
-      <button type="submit">Folgemeldung absenden</button>
-    </form>
+      <label for="fm_timeline">Zeitlicher Ablauf (Timeline des Vorfalls)</label>
+      <textarea id="fm_timeline" name="fm_timeline" rows="3"></textarea>
 
-    <!-- ZWISCHENBERICHT FORMULAR -->
-    <form id="zwischenberichtForm" class="form-section">
-      <label for="zb_unternehmen">Unternehmen</label>
-      <input type="text" id="zb_unternehmen" required />
+      <label for="fm_analyse">Technische Analyse (sofern vorhanden)</label>
+      <textarea id="fm_analyse" name="fm_analyse" rows="3"></textarea>
 
-      <label for="zb_kontakt">Kontaktperson</label>
-      <textarea id="zb_kontakt" rows="2" required></textarea>
+      <label for="fm_ursache">Vermutete Ursache bzw. Angriffsvektor</label>
+      <textarea id="fm_ursache" name="fm_ursache" rows="3"></textarea>
 
-      <label for="zb_status">Aktueller Stand der Bearbeitung</label>
-      <textarea id="zb_status" rows="4"></textarea>
+      <label for="fm_auswirkungen">Aktuelle Auswirkungen auf Betrieb, Kunden, Daten</label>
+      <textarea id="fm_auswirkungen" name="fm_auswirkungen" rows="3"></textarea>
 
-      <button type="submit">Zwischenbericht absenden</button>
-    </form>
+      <label for="fm_massnahmen">Bereits ergriffene oder geplante Maßnahmen</label>
+      <textarea id="fm_massnahmen" name="fm_massnahmen" rows="3"></textarea>
 
-    <!-- FORTSCHRITTSBERICHT FORMULAR -->
-    <form id="fortschrittForm" class="form-section">
-      <label for="fs_unternehmen">Unternehmen</label>
-      <input type="text" id="fs_unternehmen" required />
+      <label for="fm_kommunikation">Kommunikationsmaßnahmen (intern/extern)</label>
+      <textarea id="fm_kommunikation" name="fm_kommunikation" rows="3"></textarea>
 
-      <label for="fs_kontakt">Kontaktperson</label>
-      <textarea id="fs_kontakt" rows="2" required></textarea>
-
-      <label for="fs_massnahmen">Umgesetzte Maßnahmen</label>
-      <textarea id="fs_massnahmen" rows="4"></textarea>
-
-      <button type="submit">Fortschrittsbericht absenden</button>
-    </form>
-
-    <!-- ABSCHLUSSBERICHT FORMULAR -->
-    <form id="abschlussForm" class="form-section">
-      <label for="ab_unternehmen">Unternehmen</label>
-      <input type="text" id="ab_unternehmen" required />
-
-      <label for="ab_kontakt">Kontaktperson</label>
-      <textarea id="ab_kontakt" rows="2" required></textarea>
-
-      <label for="ab_bewertung">Abschließende Bewertung des Vorfalls</label>
-      <textarea id="ab_bewertung" rows="4"></textarea>
-
-      <label for="ab_ausblick">Lessons Learned / Ausblick</label>
-      <textarea id="ab_ausblick" rows="3"></textarea>
-
-      <button type="submit">Abschlussbericht absenden</button>
+      <button type="submit">Folgemeldung übermitteln & PDF generieren</button>
     </form>
   </main>
 
@@ -136,3 +116,4 @@
   </script>
 </body>
 </html>
+
