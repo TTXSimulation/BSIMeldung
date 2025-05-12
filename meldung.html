@@ -77,20 +77,23 @@
     <!-- Zwischenbericht Formular -->
     <form id="zwischenberichtForm" class="form-section">
       <p>Dieses Formular dient als Zwischenmeldung bei andauernden oder noch nicht vollständig analysierten Vorfällen.</p>
+      <label for="zb_vorfallID">Referenz zur Erstmeldung (Vorfall-ID)</label>
+      <input type="text" id="zb_vorfallID" required />
       <label for="zb_technik">Update zur technischen Lage</label>
       <textarea id="zb_technik" rows="3"></textarea>
-      <label for="zb_ursache">Neue Erkenntnisse zu Ursachen / Angriffsweg</label>
+      <label for="zb_ursache">Neue Erkenntnisse zu Ursache oder Angriffsmethode</label>
       <textarea id="zb_ursache" rows="3"></textarea>
-      <label for="zb_wiederherstellung">Fortschritt bei Wiederherstellung</label>
+      <label for="zb_wiederherstellung">Fortschritt bei Wiederherstellungsmaßnahmen</label>
       <textarea id="zb_wiederherstellung" rows="3"></textarea>
-      <label for="zb_auswirkungen">Neue/veränderte Auswirkungen</label>
+      <label for="zb_auswirkungen">Neue oder veränderte Auswirkungen</label>
       <textarea id="zb_auswirkungen" rows="3"></textarea>
-      <label for="zb_probleme">Probleme bei der Bewältigung</label>
+      <label for="zb_probleme">Probleme bei der Bewältigung des Vorfalls</label>
       <textarea id="zb_probleme" rows="3"></textarea>
-      <label for="zb_bedarf">Bedarf an Unterstützung durch BSI</label>
+      <label for="zb_bedarf">Bedarf an Unterstützung oder Rückmeldung vom BSI</label>
       <textarea id="zb_bedarf" rows="3"></textarea>
       <button type="submit">Zwischenbericht übermitteln & PDF generieren</button>
-    </form>
+  </form>
+
 
     <!-- Fortschrittsbericht Formular -->
     <form id="fortschrittForm" class="form-section">
