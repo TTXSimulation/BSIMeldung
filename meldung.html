@@ -18,21 +18,38 @@
   <main class="container">
     <h2 id="formTitle">Meldung</h2>
 
-    <!-- FRÜHWARNUNG FORMULAR -->
+    <!-- FRÜHWARNUNG FORMULAR (Originalversion) -->
     <form id="fruehwarnungForm" class="form-section">
-      <label for="fw_unternehmen">Unternehmen</label>
-      <input type="text" id="fw_unternehmen" required />
+      <p>Dieses Formular dient zur Meldung eines IT-Sicherheitsvorfalls gemäß §30 BSIG (NIS2). Bitte füllen Sie alle Felder vollständig aus.</p>
 
-      <label for="fw_kontakt">Kontaktperson</label>
-      <textarea id="fw_kontakt" rows="2" required></textarea>
+      <label for="unternehmen">Unternehmen</label>
+      <input type="text" id="unternehmen" name="unternehmen" required />
 
-      <label for="fw_zeit">Zeitpunkt der Beobachtung</label>
-      <input type="datetime-local" id="fw_zeit" required />
+      <label for="kontakt">Kontaktperson (Name, Abteilung, E-Mail, Telefon)</label>
+      <textarea id="kontakt" name="kontakt" rows="2" required></textarea>
 
-      <label for="fw_verdacht">Verdacht / Auffälligkeit</label>
-      <textarea id="fw_verdacht" rows="3"></textarea>
+      <label for="zeitpunkt">Datum & Uhrzeit der Entdeckung</label>
+      <input type="datetime-local" id="zeitpunkt" name="zeitpunkt" required />
 
-      <button type="submit">Frühwarnung absenden</button>
+      <label for="standorte">Betroffene Standorte</label>
+      <input type="text" id="standorte" name="standorte" required />
+
+      <label for="systeme">Betroffene Systeme oder Dienste</label>
+      <textarea id="systeme" name="systeme" rows="2" required></textarea>
+
+      <label for="art">Art des Vorfalls (z. B. Ransomware / Verschlüsselung)</label>
+      <input type="text" id="art" name="art" required />
+
+      <label for="ursache">Erste Ursachenanalyse</label>
+      <textarea id="ursache" name="ursache" rows="3"></textarea>
+
+      <label for="massnahmen">Bereits ergriffene Maßnahmen</label>
+      <textarea id="massnahmen" name="massnahmen" rows="3"></textarea>
+
+      <label for="auswirkungen">Einschätzung der Auswirkungen</label>
+      <textarea id="auswirkungen" name="auswirkungen" rows="3"></textarea>
+
+      <button type="submit">Meldung übermitteln & PDF generieren</button>
     </form>
 
     <!-- FOLGEMELDUNG FORMULAR -->
@@ -119,5 +136,3 @@
   </script>
 </body>
 </html>
-
-
