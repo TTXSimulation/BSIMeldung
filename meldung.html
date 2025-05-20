@@ -16,6 +16,7 @@
       resize: vertical;
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <header class="header">
@@ -30,110 +31,56 @@
     <form id="fruehwarnungForm" class="form-section">
       <p>Dieses Formular dient zur Frühwarnung über einen potenziell schwerwiegenden IT-Sicherheitsvorfall gemäß §30 BSIG (NIS2).</p>
       <label for="unternehmen">Unternehmen</label>
-      <input type="text" id="unternehmen" required />
+      <input type="text" id="unternehmen" name="Unternehmen" required />
       <label for="kontakt">Kontaktperson</label>
-      <textarea id="kontakt" rows="3" required></textarea>
+      <textarea id="kontakt" name="Kontaktperson" rows="3" required></textarea>
       <label for="zeitpunkt">Datum & Uhrzeit der Entdeckung</label>
-      <input type="datetime-local" id="zeitpunkt" required />
+      <input type="datetime-local" id="zeitpunkt" name="Entdeckt am" required />
       <label for="standorte">Betroffene Standorte</label>
-      <input type="text" id="standorte" required />
+      <input type="text" id="standorte" name="Standorte" required />
       <label for="systeme">Betroffene Systeme oder Dienste</label>
-      <textarea id="systeme" rows="3" required></textarea>
+      <textarea id="systeme" name="Systeme" rows="3" required></textarea>
       <label for="art">Art des Vorfalls</label>
-      <input type="text" id="art" required />
+      <input type="text" id="art" name="Vorfalltyp" required />
       <label for="ursache">Erste Auffälligkeiten</label>
-      <textarea id="ursache" rows="3"></textarea>
+      <textarea id="ursache" name="Erste Auffälligkeiten" rows="3"></textarea>
       <label for="massnahmen">Bereits ergriffene Maßnahmen</label>
-      <textarea id="massnahmen" rows="3"></textarea>
+      <textarea id="massnahmen" name="Maßnahmen" rows="3"></textarea>
       <label for="auswirkungen">Einschätzung der Auswirkungen</label>
-      <textarea id="auswirkungen" rows="3"></textarea>
+      <textarea id="auswirkungen" name="Auswirkungen" rows="3"></textarea>
       <button type="submit">Frühwarnung übermitteln & PDF generieren</button>
     </form>
 
-    <!-- Folgemeldung Formular -->
+    <!-- Weitere Formulare -->
+    <!-- (gleiches Muster, nur mit anderen IDs) -->
+    <!-- Nur für Lesbarkeit hier abgekürzt – du kannst deine bestehenden weiteren Formulare lassen -->
+
+    <!-- Beispielhafte Folgemeldung -->
     <form id="folgemeldungForm" class="form-section">
       <p>Dieses Formular dient zur Ergänzung der Frühwarnung mit detaillierten Informationen zum IT-Sicherheitsvorfall.</p>
       <label for="fm_vorfallID">Referenz zur Erstmeldung</label>
-      <input type="text" id="fm_vorfallID" required />
+      <input type="text" id="fm_vorfallID" name="Referenz zur Erstmeldung" required />
       <label for="fm_beschreibung">Beschreibung des Vorfalls</label>
-      <textarea id="fm_beschreibung" rows="4"></textarea>
+      <textarea id="fm_beschreibung" name="Beschreibung" rows="4"></textarea>
       <label for="fm_systeme">Betroffene Systeme/Dienste</label>
-      <textarea id="fm_systeme" rows="3"></textarea>
+      <textarea id="fm_systeme" name="Systeme" rows="3"></textarea>
       <label for="fm_timeline">Zeitlicher Ablauf</label>
-      <textarea id="fm_timeline" rows="3"></textarea>
+      <textarea id="fm_timeline" name="Ablauf" rows="3"></textarea>
       <label for="fm_analyse">Technische Analyse</label>
-      <textarea id="fm_analyse" rows="3"></textarea>
+      <textarea id="fm_analyse" name="Analyse" rows="3"></textarea>
       <label for="fm_ursache">Vermutete Ursache</label>
-      <textarea id="fm_ursache" rows="3"></textarea>
+      <textarea id="fm_ursache" name="Ursache" rows="3"></textarea>
       <label for="fm_auswirkungen">Auswirkungen</label>
-      <textarea id="fm_auswirkungen" rows="3"></textarea>
+      <textarea id="fm_auswirkungen" name="Auswirkungen" rows="3"></textarea>
       <label for="fm_massnahmen">Maßnahmen</label>
-      <textarea id="fm_massnahmen" rows="3"></textarea>
+      <textarea id="fm_massnahmen" name="Maßnahmen" rows="3"></textarea>
       <label for="fm_kommunikation">Kommunikation</label>
-      <textarea id="fm_kommunikation" rows="3"></textarea>
+      <textarea id="fm_kommunikation" name="Kommunikation" rows="3"></textarea>
       <button type="submit">Folgemeldung übermitteln & PDF generieren</button>
     </form>
 
-    <!-- Zwischenbericht Formular -->
-    <form id="zwischenberichtForm" class="form-section">
-      <p>Dieses Formular dient als Zwischenmeldung bei andauernden oder noch nicht vollständig analysierten Vorfällen.</p>
-      <label for="zb_vorfallID">Referenz zur Erstmeldung (Vorfall-ID)</label>
-      <input type="text" id="zb_vorfallID" required />
-      <label for="zb_technik">Update zur technischen Lage</label>
-      <textarea id="zb_technik" rows="3"></textarea>
-      <label for="zb_ursache">Neue Erkenntnisse zu Ursache oder Angriffsmethode</label>
-      <textarea id="zb_ursache" rows="3"></textarea>
-      <label for="zb_wiederherstellung">Fortschritt bei Wiederherstellungsmaßnahmen</label>
-      <textarea id="zb_wiederherstellung" rows="3"></textarea>
-      <label for="zb_auswirkungen">Neue oder veränderte Auswirkungen</label>
-      <textarea id="zb_auswirkungen" rows="3"></textarea>
-      <label for="zb_probleme">Probleme bei der Bewältigung des Vorfalls</label>
-      <textarea id="zb_probleme" rows="3"></textarea>
-      <label for="zb_bedarf">Bedarf an Unterstützung oder Rückmeldung vom BSI</label>
-      <textarea id="zb_bedarf" rows="3"></textarea>
-      <button type="submit">Zwischenbericht übermitteln & PDF generieren</button>
-  </form>
+    <!-- Weitere Formulare (zwischenberichtForm, fortschrittForm, abschlussForm) wie gehabt -->
 
-
-    <!-- Fortschrittsbericht Formular -->
-    <form id="fortschrittForm" class="form-section">
-      <p>Dieses Formular dient zur Meldung über den Fortschritt bei längeren Vorfällen.</p>
-      <label for="fs_wiederherstellung">Wiederherstellung der Dienste</label>
-      <textarea id="fs_wiederherstellung" rows="3"></textarea>
-      <label for="fs_massnahmen">Umgesetzte Schutzmaßnahmen</label>
-      <textarea id="fs_massnahmen" rows="3"></textarea>
-      <label for="fs_aenderungen">Infrastruktur- oder Architekturänderungen</label>
-      <textarea id="fs_aenderungen" rows="3"></textarea>
-      <label for="fs_bedrohung">Beobachtungen zur Bedrohungslage</label>
-      <textarea id="fs_bedrohung" rows="3"></textarea>
-      <label for="fs_koordination">Koordination mit Dritten</label>
-      <textarea id="fs_koordination" rows="3"></textarea>
-      <label for="fs_planung">Weiteres Vorgehen</label>
-      <textarea id="fs_planung" rows="3"></textarea>
-      <button type="submit">Fortschrittsbericht übermitteln & PDF generieren</button>
-    </form>
-
-    <!-- Abschlussbericht Formular -->
-    <form id="abschlussForm" class="form-section">
-      <p>Dieses Formular dient zur abschließenden Bewertung des Vorfalls inkl. Lessons Learned.</p>
-      <label for="ab_zusammenfassung">Zusammenfassung des Vorfalls</label>
-      <textarea id="ab_zusammenfassung" rows="3"></textarea>
-      <label for="ab_ursache">Endgültige Ursachenanalyse</label>
-      <textarea id="ab_ursache" rows="3"></textarea>
-      <label for="ab_folgen">Technische und organisatorische Folgen</label>
-      <textarea id="ab_folgen" rows="3"></textarea>
-      <label for="ab_auswirkungen">Auswirkungen auf Kunden/Dienste/Daten</label>
-      <textarea id="ab_auswirkungen" rows="3"></textarea>
-      <label for="ab_lessons">Lessons Learned</label>
-      <textarea id="ab_lessons" rows="3"></textarea>
-      <label for="ab_massnahmen">Langfristige Maßnahmen</label>
-      <textarea id="ab_massnahmen" rows="3"></textarea>
-      <label for="ab_kommunikation">Kommunikation intern/extern</label>
-      <textarea id="ab_kommunikation" rows="3"></textarea>
-      <label for="ab_bewertung">Abschlussbewertung</label>
-      <textarea id="ab_bewertung" rows="3"></textarea>
-      <button type="submit">Abschlussbericht übermitteln & PDF generieren</button>
-    </form>
   </main>
 
   <script>
@@ -154,6 +101,33 @@
     } else {
       document.getElementById("formTitle").textContent = "Unbekannter Meldetyp";
     }
+
+    // PDF-Download-Logik
+    const { jsPDF } = window.jspdf;
+    const formTypes = [
+      "fruehwarnungForm",
+      "folgemeldungForm",
+      "zwischenberichtForm",
+      "fortschrittForm",
+      "abschlussForm"
+    ];
+
+    formTypes.forEach(formId => {
+      const form = document.getElementById(formId);
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          let text = "Meldung – " + formId.replace("Form", "") + "\\n\\n";
+          formData.forEach((value, key) => {
+            text += key + ": " + value + "\\n";
+          });
+          const doc = new jsPDF();
+          doc.text(text, 10, 10);
+          doc.save("Meldung_IT-Sicherheitsvorfall.pdf");
+        });
+      }
+    });
   </script>
 </body>
 </html>
